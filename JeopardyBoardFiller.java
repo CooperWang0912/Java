@@ -34,11 +34,11 @@ public class JeopardyBoardFiller {
         }
         for (int i = 0; i < NUMQUESTIONS; i++) {
             for (int j = 0; j < NUMCATEGORIES; j++) {
-                if (j == xOfstring && i == yOfstring){
+                if (j == xOfstring && i == yOfstring){ //If the number is the number clicked
                     g.setColor(Color.red); //Changing the color of the number clicked
-                    g.drawString(scoreDisplay * (i + 1) + "", gridWidth / NUMCATEGORIES / 2 + j * gridWidth / NUMCATEGORIES, gridHeight / NUMQUESTIONS / 2 + i * gridHeight / NUMQUESTIONS); //Reprinting the number clicked
+                    g.drawString(scoreDisplay * (i + 1) + "", gridWidth / NUMCATEGORIES / 2 + j * gridWidth / NUMCATEGORIES, gridHeight / NUMQUESTIONS / 2 + i * gridHeight / NUMQUESTIONS); //Reprinting the number clicked by using the x and y value of the number clicked
                 }
-                else {
+                else { //If the number is not clicked
                     g.setColor(Color.black); //Setting the normal color of the number
                     g.drawString(scoreDisplay * (i + 1) + "", gridWidth / NUMCATEGORIES / 2 + j * gridWidth / NUMCATEGORIES, gridHeight / NUMQUESTIONS / 2 + i * gridHeight / NUMQUESTIONS); //Printing out all the numbers
                 }
@@ -50,12 +50,12 @@ public class JeopardyBoardFiller {
         score += (mouseY / (gridHeight / NUMQUESTIONS) + 1) * scoreDisplay; //Adding the number clicked to the score
         for (int i = 0; i <= NUMCATEGORIES; i++){
             if (mouseX >= i  * gridWidth / NUMCATEGORIES && mouseX <= (i + 1) * gridWidth / NUMCATEGORIES){
-                xOfstring = i; //Determining the x-value of the number clicked
+                xOfstring = i; //Determining the x-value of the number clicked (Which section on the horizontal line is the number on)
             }
         }
         for (int i = 0; i <= NUMQUESTIONS; i++){
             if (mouseY >= i  * gridHeight / NUMQUESTIONS && mouseY <= (i + 1) * gridHeight / NUMQUESTIONS){
-                yOfstring = i; //Determining the y-value of the number clicked
+                yOfstring = i; //Determining the y-value of the number clicked (Which section on the vertical line is the number on)
             }
         }
     }
