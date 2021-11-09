@@ -58,6 +58,4 @@ public class ArrayTest {
         runner.reverse(d);
         runner.displayArray(d);
     }
-
-
 }
