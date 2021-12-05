@@ -1,55 +1,68 @@
 package com.example.Final;
-import java.util.Scanner;
 
 public class Final {
-    public static String str1;
-    public static String str2;
-    public String replace;
-    static Scanner scanner = new Scanner(System.in);
 
-    public void base10(int a, int b, int c, int d, int e){
-        System.out.println(a*16 + b*8 + c*4 + d*2 + e);
+    public void indexWeightedSum(double n[]){
+        double sum = 0;
+        for (int i = 0; i <= n.length - 1; i++){
+            sum += n[i] * i;
+        }
+        System.out.println(sum);
     }
 
-    public void strSwitch(String a, String b){
-        replace = a;
-        a = b;
-        b = replace;
+    public void charsToString(char n[]){
+        String a = "";
+        for (int i = 0; i <= n.length - 1; i++){
+            if (n[i] >= 97 && n[i] <= 122){
+                a += n[i];
+            }
+        }
         System.out.println(a);
-        System.out.println(b);
     }
 
-    public void divide(int a){
-        System.out.println((a/1000) % (a%10));
-        System.out.println((a/1000) % ((a%100)/10));
-        System.out.println((a/1000) % ((a%1000)/100));
+    public void ifSum(int n[], int m){
+        boolean a = false;
+        for (int i = 0; i <= n.length - 2; i++){
+            if (n[i] + n[i + 1] == m){
+                a = true;
+            }
+        }
+        if (a == true){
+            System.out.println("yes");
+        }
+        else{
+            System.out.println("no");
+        }
     }
 
-    public void letter(int a, int b){
-        if ((a+b >= 65 && a+b <= 90) || (a+b >= 97 && a+b <= 122)){
-            System.out.println((char)(a+b));
+    public void mostChar(char n[]){
+        int alpha[] = new int[26];
+        int max;
+        int pos = 0;
+        for (int i = 0; i <= n.length - 1; i++){
+            alpha[n[i] - 97]++;
         }
-        else if(a+b < 65){
-            System.out.println('A');
+        max = alpha[0];
+        for (int i = 0; i <= alpha.length - 1; i++){
+            if (alpha[i] > max){
+                max = alpha[i];
+                pos = i;
+            }
         }
-        else if(a+b > 90 && a+b <= 93){
-            System.out.println('Z');
-        }
-        else if(a+b > 93 && a+b < 97){
-            System.out.println('a');
-        }
-        else if(a+b > 122){
-            System.out.println('z');
-        }
+        System.out.println((char)(pos + 97));
     }
 
     public static void main(String[]args){
         Final runner = new Final();
-        str1 = scanner.next();
-        str2 = scanner.next();
-        runner.base10(1,0,1,1,1);
-        runner.strSwitch(str1,str2);
-        runner.divide(34924);
-        runner.letter(90, 3);
+        double a[] = {5.8, 3.1, 2.5};
+        char b[] = {'h', 'i', '!', 'H', 'e', 'l', 'L', 'o', '?'};
+        int c[] = {1,5,2,7,3};
+        char d[] = {'h', 'k', 'h', 'u', 'b', 'e', 'k', 'u', 'u'};
+        int e = 9;
+        runner.indexWeightedSum(a);
+        runner.charsToString(b);
+        runner.ifSum(c, e);
+        runner.mostChar(d);
     }
+
 }
