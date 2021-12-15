@@ -125,15 +125,129 @@ public class FileAnalysis {
 
     // returns the most common word in the file
     private String mostCommonWord() {
+        int numOfWords = 1;
+        for (int i = 0; i <= content.length()-1; i++){
+            if (content.charAt(i) == ' '){
+                numOfWords++;
+            }
+            if (content.charAt(i) == ','){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '.' && content.charAt(i-1) == '.'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '!'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '?'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '"'){
+                numOfWords++;
+            }
+            if (content.charAt(i) >= 48 && content.charAt(i) <= 57){
+                numOfWords++;
+            }
+        }
+        String a[] =  new String[numOfWords * 2];
+        int pos = 0;
+        int num = 0;
+        int max = 0;
         String word = "";
+        for (int i = 0; i <= content.length() - 1; i++){
+            for (int j = i + 1; j <= content.length() - 1; j++){
+                if (!Character.isLetter(content.charAt(j))){
+                    a[pos] = content.substring(i, j);
+                    pos++;
+                    i = j + 1;
+                }
+            }
+        }
+        for (int i = 0; i <= numOfWords - 1; i++){
+            num = 0;
+            for (int j = 0; j <= numOfWords - 1; j++){
+                if (a[i].equals(a[j])){
+                    num++;
+                }
+            }
+            if (num > max && a[i].length() >= 4){
+                max = num;
+                word = a[i];
+            }
+        }
         return word;
     }
 
     // returns the ten most common words (of length > 5) in
     // the file, in order from most common to least common
     private String[] tenMostCommonWords() {
-        String a[] = new String[1];
-        return a;
+        int numOfWords = 1;
+        for (int i = 0; i <= content.length()-1; i++){
+            if (content.charAt(i) == ' '){
+                numOfWords++;
+            }
+            if (content.charAt(i) == ','){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '.' && content.charAt(i-1) == '.'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '!'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '?'){
+                numOfWords++;
+            }
+            if (content.charAt(i) == '"'){
+                numOfWords++;
+            }
+            if (content.charAt(i) >= 48 && content.charAt(i) <= 57){
+                numOfWords++;
+            }
+        }
+        String a[] =  new String[numOfWords * 2];
+        int pos = 0;
+        int num = 0;
+        int min = 0;
+        int minPos = 1;
+        int max[] = new int[10];
+        boolean noDup = true;
+        String word[] = new String[10];
+        for (int i = 0; i <= content.length() - 1; i++){
+            for (int j = i + 1; j <= content.length() - 1; j++){
+                if (!Character.isLetter(content.charAt(j))){
+                    a[pos] = content.substring(i, j);
+                    pos++;
+                    i = j + 1;
+                }
+            }
+        }
+        for (int i = 0; i <= numOfWords - 1; i++){
+            num = 0;
+            min = max[1];
+            minPos = 1;
+            for (int j = 0; j <= numOfWords - 1; j++){
+                if (a[i].equals(a[j])){
+                    num++;
+                }
+            }
+            for (int k = 0; k <= 9; k++){
+                if (max[k] < min){
+                    min = max[k];
+                    minPos = k;
+                }
+            }
+            for (int k = 0; k <= 9; k++){
+                if (a[i].equals(word[k])){
+                    noDup = false;
+                }
+            }
+            if (num > min && a[i].length() >= 5 && noDup == true){
+                word[minPos] = a[i];
+                max[minPos] = num;
+            }
+        }
+        return word;
     }
 
     // returns the longest sentence in the file
