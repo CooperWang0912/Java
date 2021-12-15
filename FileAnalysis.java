@@ -224,8 +224,9 @@ public class FileAnalysis {
         }
         for (int i = 0; i <= numOfWords - 1; i++){
             num = 0;
-            min = max[1];
-            minPos = 1;
+            min = max[0];
+            minPos = 0;
+            noDup = true;
             for (int j = 0; j <= numOfWords - 1; j++){
                 if (a[i].equals(a[j])){
                     num++;
