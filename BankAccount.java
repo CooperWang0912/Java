@@ -30,8 +30,8 @@ public class BankAccount {
     }
 
     public String toString(){
-        System.out.println(name + " " + money + " " + interest);
-        return name + " " + money + " " + interest;
+        System.out.println(money);
+        return money;
     }
 
     public static void main(String[]args){
