@@ -31,7 +31,7 @@ public class BankAccount {
 
     public String toString(){
         System.out.println(money);
-        return money;
+        return money + "";
     }
 
     public static void main(String[]args){
