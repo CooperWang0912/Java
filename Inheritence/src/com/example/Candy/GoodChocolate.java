@@ -16,6 +16,10 @@ public class GoodChocolate extends Chocolate{
     public String toString(){
         return getName() + " " + getSize() + " " + getSweetness() + " " + getHardness() + " " + getSourness() + " " + meltValue;
     }
+    
+    public void heat(int n){
+        meltValue -= n;
+    }
 
     public static void main(String[]args){
         Candy a = new Candy("Twizzler", 5, 5, 5);
@@ -30,6 +34,8 @@ public class GoodChocolate extends Chocolate{
         a.addHardness(10);
         b.addHardness(10);
         c.addHardness(10);
+        b.eat(5);
+        c.heat(5);
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
