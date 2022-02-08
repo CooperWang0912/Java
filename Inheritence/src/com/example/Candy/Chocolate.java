@@ -16,6 +16,10 @@ public class Chocolate extends Candy{
     public void addSize(int n){
         setSize(getSize() + n);
     }
+    
+    public void eat(int n){
+        setSize(getSize() - n);
+    }
 
     public String toString(){
         return getName() + " " + getSize() + " " + getSweetness() + " " + getHardness() + " " + getSourness();
