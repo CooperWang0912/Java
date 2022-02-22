@@ -219,10 +219,10 @@ public class Photoshop extends Component {
             g = 0; //reset green value
             b = 0; //reset blue value
             for (int l = i - 1; l <= i + 1; l++){ //go through 3 rows
-                for (int k = pixels[0].length-2; k <= pixels[0].length-1; k++){ //go through 2 columns
-                    r += pixels[l][k].getRed(); //add red value
-                    g += pixels[l][k].getGreen(); //add green value
-                    b += pixels[l][k].getBlue(); //add blue value
+                for (int k = pixels.length-2; k <= pixels.length-1; k++){ //go through 2 columns
+                    r += pixels[k][l].getRed(); //add red value
+                    g += pixels[k][l].getGreen(); //add green value
+                    b += pixels[k][l].getBlue(); //add blue value
                 }
             }
             r = r / 6; //average red value
