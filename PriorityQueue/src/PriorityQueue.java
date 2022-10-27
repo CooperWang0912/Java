@@ -75,6 +75,11 @@ public class PriorityQueue<T> {
                 if (queue.get(mid).priority < p){
                     end = mid - 1;
                 }
+                if (queue.get(mid).priority == p){
+                    queue.add(mid, n);
+                    base.put(info, n);
+                    return;
+                }
             }
             if (queue.get(mid).priority > p){
                 queue.add(mid + 1, n);
@@ -101,8 +106,7 @@ public class PriorityQueue<T> {
         a.put("Condy", 15);
         a.put("Cooper", 30);
         a.put("Joe", 20);
-        a.put("Mr. Friedman", 29);
-        a.put("Tony", 28);
+        a.put("Tony", 20);
         a.put("Ryan", 31);
         a.put("Yumna", 4);
         a.put("Cooper", 14);
