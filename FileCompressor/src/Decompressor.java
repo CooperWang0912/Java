@@ -53,21 +53,23 @@ public class Decompressor {
 //            }
 //        }
 
-        String bits = ""; //the string that holds the codes
+        StringBuilder bits = new StringBuilder(); //the string that holds the codes
 
         int a;
 
         while ((a = in.read()) != -1){ //goes through the file
-            bits += String.format("%8s", Integer.toBinaryString((char)a).replace(' ', '0')); //convert the character to binary code
+            bits.append(String.format("%8s", Integer.toBinaryString((char)a).replace(' ', '0'))); //convert the character to binary code
         }
 
-        bits = bits.replace(' ', '0'); //replace the space with 0
+        String bit = bits.toString();
 
-        bits += val; //add leftover code to the string
+        bit = bit.replace(' ', '0'); //replace the space with 0
+
+        bit += val; //add leftover code to the string
 
         String ans = ""; //the string that holds the decompressed text
 
-        ByteReader input = new ByteReader(bits, codeMap); //create new byte reader
+        ByteReader input = new ByteReader(bit, codeMap); //create new byte reader
 
         ans = input.read(); //read the codes and convert them
 

@@ -12,15 +12,15 @@ public class ByteReader {
     }
 
     public String read(){
-        String ans = ""; //declare an empty string
+        StringBuilder ans = new StringBuilder(); //declare an empty string
         int index = 0; //set index to 0
         for (int i = 0; i <= n.length(); i++){ //goes through the string
             if (m.get(n.substring(index, i)) != null){ //if the result from the map is not null
-                ans += m.get(n.substring(index, i)); //add the result to the empty string
+                ans.append(m.get(n.substring(index, i))); //add the result to the empty string
                 index = i; //set index to i
             }
         }
-        return ans; //return answer
+        return ans.toString(); //return answer
     }
 
 }

@@ -58,10 +58,10 @@ public class FileCompressor {
 
         int j;
 
-        String s = ""; //string used to carry the codes
+        StringBuilder s = new StringBuilder(); //string used to carry the codes
 
         while ((j = fr2.read()) != -1){ //goes through the file again
-            s += runner.algorithm.get((char)j); //add the corresponding code of the character to the string
+            s.append(runner.algorithm.get((char)j)); //add the corresponding code of the character to the string
         }
 
         String left = s.substring((s.length() / 8) * 8); //gets the remaining code that is not enough to form a bit
@@ -85,7 +85,7 @@ public class FileCompressor {
 
         ans.writeToFile("\n"); //next line
 
-        ans.put(s); //write the compressed file
+        ans.put(s.toString()); //write the compressed file
 
         ans.close(); //close the file
     }
