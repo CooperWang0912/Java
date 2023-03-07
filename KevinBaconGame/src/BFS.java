@@ -67,6 +67,7 @@ public class BFS {
                 for (int i = 0; i <= nameToActor.get(lead).getEdges().size() - 1; i++){
                     if (nameToActor.get(lead).getEdges().get(i).actor2.equals(finish)){
                         movies.add(nameToActor.get(lead).getEdges().get(i).movie);
+                        break;
                     }
                 }
                 lead = finish;
